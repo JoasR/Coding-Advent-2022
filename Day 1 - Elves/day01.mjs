@@ -1,9 +1,9 @@
 import  {readFileSync} from "node:fs"
 
-const elves = readFileSync("day01.txt", { encoding: "utf-8" })
-.replace(/\r/g, "")
-.trim()
-.split("\n\n")
+const elves = readFileSync("day01.txt", { encoding: "utf-8" }) //Read txt content
+.replace(/\r/g, "") // Remove all \r characters to avoid issues on Windows
+.trim() // Remove starting and ending whitespaces
+.split("\n\n") // Split on double Newline
 
 function part1() {
     const calories = elves.map(elf => {
@@ -18,7 +18,7 @@ function part1() {
     },0)
         totalCaloriesArray.push(sum)
     });
-    // console.log(findHighestNumber(totalCaloriesArray))
+    console.log(findHighestNumber(totalCaloriesArray))
 }
 
 function findHighestNumber(arrayOfNumbers){
