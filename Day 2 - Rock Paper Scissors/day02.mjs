@@ -26,55 +26,85 @@ function part2(){
     console.log("The totalscore for part 2 is: " + totalScore)
 }
 
+const result = {
+    draw: 3,
+    win: 6,
+    loss: 0
+}
+
+const movesScore = {
+    rock: 1, 
+    paper: 2, 
+    scissors: 3 
+}
+
+const opponentMoves = {
+    rock: 'A',
+    paper: 'B',
+    scissors: 'C',
+}
+
+const ourMoves = {
+    rock: 'X',
+    paper: 'Y',
+    scissors: 'Z'
+}
+
+const ourResult = {
+    loss: 'X',
+    draw: 'Y',
+    win: 'Z'
+
+}
 
 function gamePointsPart1(game) {
     //console.log("game: " + game)
     let points = 0
-    const opponent = game.slice(0,1)
-    const player = game.slice(2,3)
+    const opponentMove = game.slice(0,1)
+    const playerMove = game.slice(2,3)
     //console.log("opponent: " + opponent + " player: " + player)
 
-    switch(opponent)
+    switch(opponentMove)
     {
-        case 'A':
-            switch(player)
+        case opponentMoves.rock: // 'A'
+            switch(playerMove)
             {
-                case 'X':
-                    points = 4;
+                case ourMoves.rock:
+                    points = result.draw + movesScore.rock; // 4
                     break;
-                case 'Y':
-                    points = 8;
+                case ourMoves.paper:
+                    points = result.win + movesScore.paper; // 8
                     break;
-                case 'Z':
-                    points = 3;
+                case ourMoves.scissors:
+                    points = result.loss + movesScore.scissors; // 3
                     break;
             }
         break;
-        case 'B':
-            switch(player)
+        case opponentMoves.paper: // 'B'
+            switch(playerMove)
             {
-                case 'X':
-                    points = 1;
+                case ourMoves.rock:
+                    points = result.loss + movesScore.rock; // 1
                     break;
-                case 'Y':
-                    points = 5;
+                case ourMoves.paper:
+                    points = result.draw + movesScore.paper; // 5
                     break;
-                case 'Z':
-                    points = 9;
+                case ourMoves.scissors:
+                    points = result.win + movesScore.scissors; // 9
                     break;
             }
         break;
-        case 'C':
-            switch(player)
+        case opponentMoves.scissors: // 'C'
+            switch(playerMove)
             {
-                case 'X':
-                    points = 7;
+                case ourMoves.rock:
+                    points = result.win + movesScore.rock; // 7
                     break;
-                case 'Y':
-                    points = 2;
+                case ourMoves.paper:
+                    points = result.loss + movesScore.paper; // 2
                     break;
-                case 'Z':
-                    points = 6;
+                case ourMoves.scissors:
+                    points = result.draw + movesScore.scissors; // 6
                     break;
             }
         break;
@@ -85,51 +115,51 @@ function gamePointsPart1(game) {
 function gamePointsPart2(game){
     //console.log("game: " + game)
     let points = 0
-    const opponent = game.slice(0,1)
-    const player = game.slice(2,3)
+    const opponentMove = game.slice(0,1)
+    const playerResult = game.slice(2,3)
     //console.log("opponent: " + opponent + " player: " + player)
 
-    switch(opponent)
+    switch(opponentMove)
     {
-        case 'A':
-            switch(player)
+        case opponentMoves.rock: // 'A'
+            switch(playerResult)
             {
-                case 'X':
-                    points = 3;
+                case ourResult.loss: // 'X'
+                    points = result.loss + movesScore.scissors//3
                     break;
-                case 'Y':
-                    points = 4;
+                case ourResult.draw: // 'Y'
+                    points = result.draw + movesScore.rock// 4
                     break;
-                case 'Z':
-                    points = 8;
+                case ourResult.win: // 'Z'
+                    points = result.win + movesScore.paper// 8
                     break;
             }
         break;
-        case 'B':
-            switch(player)
+        case opponentMoves.paper: // 'B'
+            switch(playerResult)
             {
-                case 'X':
-                    points = 1;
+                case ourResult.loss: // 'X'
+                    points = result.loss + movesScore.rock// 1
                     break;
-                case 'Y':
-                    points = 5;
+                case ourResult.draw: //'Y'
+                    points = result.draw + movesScore.paper// 5
                     break;
-                case 'Z':
-                    points = 9;
+                case ourResult.win: // 'Z'
+                    points = result.win + movesScore.scissors// 9
                     break;
             }
         break;
-        case 'C':
-            switch(player)
+        case opponentMoves.scissors: // 'C'
+            switch(playerResult)
             {
-                case 'X':
-                    points = 2;
+                case ourResult.loss: // 'X'
+                    points = result.loss + movesScore.paper// 2
                     break;
-                case 'Y':
-                    points = 6;
+                case ourResult.draw: // 'Y'
+                    points = result.draw + movesScore.scissors // 6
                     break;
-                case 'Z':
-                    points = 7;
+                case ourResult.win: // 'Z'
+                    points = result.win + movesScore.rock // 7
                     break;
             }
         break;
