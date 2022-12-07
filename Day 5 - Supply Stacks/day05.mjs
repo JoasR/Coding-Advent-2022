@@ -47,7 +47,7 @@ for (const line of parsedStacks) {
     }
 }
 
-// console.log(stacks)
+console.log(stacks)
 // console.log(rawMoves);
 
 const rawMovesArray = rawMoves.split("\n")
